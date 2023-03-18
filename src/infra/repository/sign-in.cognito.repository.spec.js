@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { SignInCognitoRepository } from "./sign-in.cognito.repository";
 import AWS from "aws-sdk";
 
@@ -94,13 +95,13 @@ describe("sign-in.cognito.repository unit test", () => {
 
   describe("exceptions", () => {
     it.each`
-      field         | expresion            | args                                          | expected
-      ${"clientId"} | ${"don't is string"} | ${'{"clientId": 1, "region": "us-east1"}'}    | ${"The values to need be a string"}
-      ${"region"}   | ${"don't is string"} | ${'{"clientId": "1a2b3c", "region": 1}'}      | ${"The values to need be a string"}
-      ${"clientId"} | ${"is null"}         | ${'{"clientId": null, "region": "us-east1"}'} | ${"The field clientId is required"}
-      ${"region"}   | ${"is null"}         | ${'{"clientId": "1a2b3c", "region": null}'}   | ${"The field region is required"}
-      ${"clientId"} | ${"is blank"}        | ${'{"clientId": "", "region": "us-east1"}'}   | ${"The field clientId is required"}
-      ${"region"}   | ${"is blank"}        | ${'{"clientId": "1a2b3c", "region": ""}'}     | ${"The field region is required"}
+      field         | expresion            | args                                               | expected
+      ${"clientId"} | ${"don't is string"} | ${'{"clientId"' + ': 1, "region": "us-east1"}'}    | ${"The values to need be a string"}
+      ${"region"}   | ${"don't is string"} | ${'{"clientId"' + ': "1a2b3c", "region": 1}'}      | ${"The values to need be a string"}
+      ${"clientId"} | ${"is null"}         | ${'{"clientId"' + ': null, "region": "us-east1"}'} | ${"The field clientId is required"}
+      ${"region"}   | ${"is null"}         | ${'{"clientId"' + ': "1a2b3c", "region": null}'}   | ${"The field region is required"}
+      ${"clientId"} | ${"is blank"}        | ${'{"clientId"' + ': "", "region": "us-east1"}'}   | ${"The field clientId is required"}
+      ${"region"}   | ${"is blank"}        | ${'{"clientId"' + ': "1a2b3c", "region": ""}'}     | ${"The field region is required"}
     `(
       "should return exception when '$field' $expresion",
       ({ args, expected }) => {
