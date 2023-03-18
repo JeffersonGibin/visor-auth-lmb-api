@@ -1,1 +1,3 @@
-# visor-auth-lmb-api
+# Visor Auth Lambda API
+
+## What is this project ?
