@@ -10,11 +10,9 @@ This service is part of the project for the selective process of the Visor. The 
 
 ![image](https://user-images.githubusercontent.com/6215779/226136339-d38c7dfc-3bbc-48c5-ab0b-71eb44ba74c6.png)
 
-
 ## Pipeline flow
 
 ![image](https://user-images.githubusercontent.com/6215779/226135275-fd381b74-3fe4-498a-8bbe-2f0fac1aa6e7.png)
-
 
 ## What is this project ?
 
@@ -31,6 +29,14 @@ export AWS_SECRET_ACCESS_KEY=
 
 ```
 
+## Routes
+
+The 'endpoint' access local is `http://localhost:3000/dev/`
+
+| Context        | Resource   | Use Case             | parameters body                                         |
+| -------------- | ---------- | -------------------- | ------------------------------------------------------- |
+| Authentication | `/sign-in` | `POST /auth/sign-in` | `{'email": "email@exemple.com", "password": "123456k"}` |
+
 ## Tecnologies
 
 - serverless
@@ -38,4 +44,3 @@ export AWS_SECRET_ACCESS_KEY=
 - express
 - jest
 - docker
-
