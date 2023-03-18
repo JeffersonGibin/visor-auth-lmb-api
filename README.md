@@ -1,5 +1,6 @@
 # Visor Auth Lambda API
 
+[![Pipeline Workflow](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml/badge.svg)](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml)
 
 ## Pipeline flow
 
