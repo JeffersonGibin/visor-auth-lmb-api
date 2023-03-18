@@ -2,6 +2,11 @@
 
 [![Pipeline Workflow](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml/badge.svg)](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml)
 
+## Architecture
+
+![image](https://user-images.githubusercontent.com/6215779/226136339-d38c7dfc-3bbc-48c5-ab0b-71eb44ba74c6.png)
+
+
 ## Pipeline flow
 
 ![image](https://user-images.githubusercontent.com/6215779/226135275-fd381b74-3fe4-498a-8bbe-2f0fac1aa6e7.png)
