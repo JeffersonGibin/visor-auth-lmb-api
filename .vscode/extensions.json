@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "PKief.material-icon-theme",
+    "TimVaneker.serverless-snippets",
+    "me-dutour-mathieu.vscode-github-actions"
+  ]
+}
