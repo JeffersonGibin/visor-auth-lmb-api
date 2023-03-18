@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  api:
+    container_name: account-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/home/app:rw
