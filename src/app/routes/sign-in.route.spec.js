@@ -33,12 +33,26 @@ describe("sign-in.route.spec unit test", () => {
     expect(response.status).toBe(200);
   });
 
-  it("should return status 400 when user authenticate fails", async () => {
+  it("should return status 401 when user not authorized", async () => {
     SignInCognitoRepository.prototype.authenticate = jest
       .fn()
       .mockRejectedValue(
         new CustomException("mock message", "NotAuthorizedException")
       );
+
+    const userData = {
+      email: "john.doe@example.com",
+      password: "123456",
+    };
+
+    const response = await request(app).post("/sign-in").send(userData);
+    expect(response.status).toBe(401);
+  });
+
+  it("should return status 400 when user authenticate fails", async () => {
+    SignInCognitoRepository.prototype.authenticate = jest
+      .fn()
+      .mockRejectedValue(new CustomException("mock message", "Other"));
 
     const userData = {
       email: "john.doe@example.com",

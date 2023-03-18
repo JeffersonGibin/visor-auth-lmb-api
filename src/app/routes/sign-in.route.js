@@ -16,8 +16,17 @@ export const signInRoute = (applications) => {
     const instanceUseCase = new SignInUseCase(signInRepository, userDTO);
     const response = await instanceUseCase.execute();
 
-    const httpStatusCode = response.status === "SUCCESS" ? 200 : 400;
+    if (!response.code) {
+      res.status(200).json(response);
+      return;
+    }
 
-    return res.status(httpStatusCode).json(response);
+    if (response.code === "NotAuthorizedException") {
+      res.status(401).json(response);
+
+      return;
+    }
+
+    return res.status(400).json(response);
   });
 };
