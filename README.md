@@ -1,5 +1,11 @@
 # Visor Auth Lambda API
 
+
+## Pipeline flow
+
+![image](https://user-images.githubusercontent.com/6215779/226135275-fd381b74-3fe4-498a-8bbe-2f0fac1aa6e7.png)
+
+
 ## What is this project ?
 
 ## How start the project in the localhost?
