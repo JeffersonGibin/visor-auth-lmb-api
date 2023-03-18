@@ -1,31 +1,33 @@
-# service: visor-account-lmb-api
-# frameworkVersion: "3"
+service: visor-auth-lmb-api
+frameworkVersion: "3"
 
-# provider:
-#   name: aws
-#   runtime: nodejs18.x
-#   stage: dev
-#   region: ${env:AWS_COGNITO_REGION}
+memorySize: 128
 
-# functions:
-#   functionName:
-#     AccountLmb:
-#     # Environment variables need to be in OS
-#     environment:
-#       AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION}
-#       AWS_COGNITO_CLIENT_ID: ${env:AWS_COGNITO_CLIENT_ID}
-#     handler: index.handler
-#     events:
-#       # Accept any path that is added to the service
-#       - http:
-#           path: /{proxy+}
-#           method: ANY
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: ${env:AWS_COGNITO_REGION}
 
-# plugins:
-#   # plus to serverless work offile
-#   - serverless-offline
+functions:
+  functionName:
+    AuthLmb:
+    # Environment variables need to be in OS
+    environment:
+      AWS_COGNITO_REGION: ${env:AWS_COGNITO_REGION}
+      AWS_COGNITO_CLIENT_ID: ${env:AWS_COGNITO_CLIENT_ID}
+    handler: index.handler
+    events:
+      # Accept any path that is added to the service
+      - http:
+          path: /{proxy+}
+          method: ANY
 
-# custom:
-#   # This is necessary because the docker to use this host
-#   serverless-offline:
-#     host: 0.0.0.0
+plugins:
+  # plus to serverless work offile
+  - serverless-offline
+
+custom:
+  # This is necessary because the docker to use this host
+  serverless-offline:
+    host: 0.0.0.0
