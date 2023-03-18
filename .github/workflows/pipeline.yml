@@ -18,15 +18,15 @@ jobs:
     with:
       node-version: "18"
 
-  # release:
-  #   # if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
-  #   if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.state == 'open') }}
-  #   uses: ./.github/workflows/release.yml
-  #   needs: build
-  #   with:
-  #     node-version: "18"
-  #   secrets:
-  #     AWS_COGNITO_REGION: ${{ vars.AWS_COGNITO_REGION }}
-  #     AWS_COGNITO_CLIENT_ID: ${{ secrets.AWS_COGNITO_CLIENT_ID }}
-  #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  release:
+    # if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
+    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.state == 'open') }}
+    uses: ./.github/workflows/release.yml
+    needs: build
+    with:
+      node-version: "18"
+    secrets:
+      AWS_COGNITO_REGION: ${{ vars.AWS_COGNITO_REGION }}
+      AWS_COGNITO_CLIENT_ID: ${{ secrets.AWS_COGNITO_CLIENT_ID }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
