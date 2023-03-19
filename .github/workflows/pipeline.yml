@@ -2,11 +2,13 @@ name: Pipeline Workflow
 
 on:
   push:
+    branches: ["main"]
     paths-ignore:
       - "README.md"
 
   pull_request:
     types: [opened, synchronize]
+    branches: ["main"]
     paths-ignore:
       - "README.md"
 
@@ -28,5 +30,7 @@ jobs:
     secrets:
       AWS_COGNITO_REGION: ${{ vars.AWS_COGNITO_REGION }}
       AWS_COGNITO_CLIENT_ID: ${{ secrets.AWS_COGNITO_CLIENT_ID }}
+      AWS_API_GATEWAY_ID: ${{AWS_API_GATEWAY_ID}}
+      AWS_API_GATEWAY_RESOURCE_ID: ${{ AWS_API_GATEWAY_RESOURCE_ID }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
