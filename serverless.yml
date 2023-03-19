@@ -1,13 +1,16 @@
 service: visor-auth-lmb-api
 frameworkVersion: "3"
 
-memorySize: 128
-
 provider:
   name: aws
   runtime: nodejs18.x
   stage: dev
   region: ${env:AWS_COGNITO_REGION}
+
+  # This is necessary to use only api to multi-resource
+  apiGateway:
+    restApiId: ${env:AWS_API_GATEWAY_ID}
+    restApiRootResourceId: ${env:AWS_API_GATEWAY_RESOURCE_ID}
 
 functions:
   functionName:
@@ -20,7 +23,7 @@ functions:
     events:
       # Accept any path that is added to the service
       - http:
-          path: /{proxy+}
+          path: /auth/{proxy+}
           method: ANY
 
 plugins:
