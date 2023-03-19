@@ -22,8 +22,15 @@ To execute docker-compose local using Cognito you need environments variables in
 project. The proposity is delivery of the project deployed in the cloud.
 
 ```shell
-export AWS_COGNITO_REGION=us-east-1
+# Credentials Gateway
+export AWS_API_GATEWAY_ID=
+export AWS_API_GATEWAY_RESOURCE_ID=
+
+# Credentials Cognito
 export AWS_COGNITO_CLIENT_ID=
+export AWS_COGNITO_REGION=us-east-1
+
+# Credentials with access programatic
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 
