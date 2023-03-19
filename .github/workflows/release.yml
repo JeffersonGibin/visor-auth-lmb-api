@@ -11,10 +11,14 @@ on:
         required: true
       AWS_COGNITO_CLIENT_ID:
         required: true
+      AWS_API_GATEWAY_ID:
+        required: true
+      AWS_API_GATEWAY_RESOURCE_ID:
+        required: true
       AWS_ACCESS_KEY_ID:
         required: true
       AWS_SECRET_ACCESS_KEY:
-        required: true     
+        required: true
 
 jobs:
   deploy:
@@ -36,6 +40,8 @@ jobs:
         env:
            AWS_COGNITO_REGION: ${{ secrets.AWS_COGNITO_REGION }}
            AWS_COGNITO_CLIENT_ID: ${{ secrets.AWS_COGNITO_CLIENT_ID }}
+           AWS_API_GATEWAY_ID: ${{secrets.AWS_API_GATEWAY_ID}}
+           AWS_API_GATEWAY_RESOURCE_ID: ${{ secrets.AWS_API_GATEWAY_RESOURCE_ID }}           
            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: npm run deploy
