@@ -26,6 +26,9 @@ functions:
           path: /auth/{proxy+}
           method: ANY
 
+# Hide endpoint in the output deploy
+noDeploy: true
+
 plugins:
   # plus to serverless work offile
   - serverless-offline
