@@ -19,30 +19,53 @@ describe("sign-in.cognito.repository unit test", () => {
             },
           }),
         }),
+        getUser: jest.fn().mockReturnValue({
+          promise: jest.fn().mockResolvedValue({
+            UserAttributes: [
+              {
+                Name: "email",
+                Value: "josh@gmail.com",
+              },
+              {
+                Name: "name",
+                Value: "Josh",
+              },
+            ],
+          }),
+        }),
       };
     });
   });
 
   describe("authenticate method", () => {
-    it("should return the token when user is authenticate", async () => {
+    it("should return the data when user is authenticate", async () => {
       const instance = new SignInCognitoRepository({
         clientId: "1a2b3c",
         region: "us-east1",
       });
 
-      const token = await instance.authenticate({
+      const response = await instance.authenticate({
         email: "exemple@exemple.com",
         password: "123456v",
       });
 
-      expect(token).toBe("token123");
+      expect(response).toEqual({
+        email: "josh@gmail.com",
+        name: "Josh",
+        token: "token123",
+      });
     });
 
-    it("shouldn't return the token when a user doesn't is authenticate", async () => {
+    it("shouldn't return the data when a user doesn't is authenticate", async () => {
       AWS.CognitoIdentityServiceProvider = jest.fn().mockImplementation(() => {
         return {
           initiateAuth: initiateAuthFn.mockReturnValue({
             promise: jest.fn().mockResolvedValue({}),
+          }),
+          getUser: jest.fn().mockReturnValue({
+            promise: jest.fn().mockResolvedValue({
+              UserAttributes: [],
+            }),
           }),
         };
       });
@@ -52,12 +75,12 @@ describe("sign-in.cognito.repository unit test", () => {
         region: "us-east1",
       });
 
-      const token = await instance.authenticate({
+      const response = await instance.authenticate({
         email: "exemple@exemple.com",
         password: "123456v",
       });
 
-      expect(token).toBe("");
+      expect(response).toEqual("");
     });
 
     it("should call authenticate correctly", async () => {

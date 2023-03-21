@@ -15,14 +15,16 @@ export class SignInUseCase {
 
   async execute() {
     try {
-      const token = await this.#signInRepository.authenticate({
+      const response = await this.#signInRepository.authenticate({
         email: this.#userDTO.email,
         password: this.#userDTO.password,
       });
 
+      console.log(response);
+
       return {
         status: "SUCCESS",
-        token,
+        data: response,
       };
     } catch (error) {
       const messageError = error.message;

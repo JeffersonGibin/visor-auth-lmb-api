@@ -6,7 +6,11 @@ describe("sign-in.usecase unit test", () => {
   describe("scenario success", () => {
     it("should to return success when authenticate", async () => {
       const mockRepository = {
-        authenticate: jest.fn().mockResolvedValue("token123"),
+        authenticate: jest.fn().mockResolvedValue({
+          token: "token123",
+          name: "Josh",
+          email: "josh@gmail.com",
+        }),
       };
 
       const userDto = {
@@ -19,7 +23,11 @@ describe("sign-in.usecase unit test", () => {
 
       expect(result).toEqual({
         status: "SUCCESS",
-        token: "token123",
+        data: {
+          token: "token123",
+          name: "Josh",
+          email: "josh@gmail.com",
+        },
       });
     });
   });

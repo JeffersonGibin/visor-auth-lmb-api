@@ -9,8 +9,8 @@ provider:
 
   # This is necessary to use only api to multi-resource
   apiGateway:
-    restApiId: ${env:AWS_API_GATEWAY_ID}
-    restApiRootResourceId: ${env:AWS_API_GATEWAY_RESOURCE_ID}
+    restApiId: 143gm9rzn3
+    restApiRootResourceId: a71yvg
 
 functions:
   functionName:

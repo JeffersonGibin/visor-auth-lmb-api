@@ -49,10 +49,32 @@ export class SignInCognitoRepository {
       },
     };
 
-    const response = await this.#cognito.initiateAuth(params).promise();
-    const token = response?.AuthenticationResult?.AccessToken;
+    const token = await this.#cognito
+      .initiateAuth(params)
+      .promise()
+      .then((response) => {
+        return response?.AuthenticationResult?.AccessToken;
+      });
+
+    const data = await this.#cognito
+      .getUser({
+        AccessToken: token,
+      })
+      .promise();
+
+    console.log(data);
+
+    const { email, name } = data.UserAttributes.reduce((newList, item) => {
+      newList[item.Name] = item.Value;
+      return newList;
+    }, {});
+
     if (token) {
-      return token;
+      return {
+        name,
+        email,
+        token,
+      };
     }
 
     return "";
