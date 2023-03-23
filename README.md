@@ -1,10 +1,10 @@
 # Visor Auth Lambda API
 
-[![Pipeline Workflow](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml/badge.svg)](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml). For more information about the project, [visit here](https://github.com/JeffersonGibin/visor-challenge)
+[![Pipeline Workflow](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml/badge.svg)](https://github.com/JeffersonGibin/visor-auth-lmb-api/actions/workflows/pipeline.yml)
 
 ## What is this project ?
 
-This service is part of the project for the selective process of the Visor. The project is a service to authenticate a user in the AWS Cognito.
+This service is part of the project for the selective process of the Visor. The project is a service to authenticate a user in the AWS Cognito.For more information about the project, [visit here](https://github.com/JeffersonGibin/visor-challenge)
 
 ## Architecture
 
